@@ -33,11 +33,11 @@ public class PlayerEnchantItemBlocker extends PacketAdapter {
         PlayerEnchantItemBlocker.PlayerEnchantItemMap = new HashMap<>();
     }
 
-    public PlayerEnchantItemBlocker(final Main plugin) {
+    public PlayerEnchantItemBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.ENCHANT_ITEM);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

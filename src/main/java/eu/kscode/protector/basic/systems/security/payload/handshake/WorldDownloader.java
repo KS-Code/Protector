@@ -26,7 +26,7 @@ public class WorldDownloader implements PluginMessageListener {
     public WorldDownloader() {
     }
 
-    public void onPluginMessageReceived(final String channel, final Player player, final byte[] value) {
+    public void onPluginMessageReceived(String channel, Player player, byte[] value) {
         if (Main.getInstance().getConfig().getBoolean("CustomPayLoad.WorldDownloader.enable")) {
             if (channel.equalsIgnoreCase("WDL|INIT") || channel.equalsIgnoreCase("WDL|CONTROL") || channel.equalsIgnoreCase("WDL|REQUEST") || channel.contains("WDL")) {
                 AKickManager.AKickManager2(player.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("CustomPayLoad.WorldDownloader.kick-message"));

@@ -40,47 +40,47 @@ public class XML {
     /**
      * The Character '&amp;'.
      */
-    public static final Character AMP = '&';
+    public static Character AMP = '&';
 
     /**
      * The Character '''.
      */
-    public static final Character APOS = '\'';
+    public static Character APOS = '\'';
 
     /**
      * The Character '!'.
      */
-    public static final Character BANG = '!';
+    public static Character BANG = '!';
 
     /**
      * The Character '='.
      */
-    public static final Character EQ = '=';
+    public static Character EQ = '=';
 
     /**
      * The Character '>'.
      */
-    public static final Character GT = '>';
+    public static Character GT = '>';
 
     /**
      * The Character '&lt;'.
      */
-    public static final Character LT = '<';
+    public static Character LT = '<';
 
     /**
      * The Character '?'.
      */
-    public static final Character QUEST = '?';
+    public static Character QUEST = '?';
 
     /**
      * The Character '"'.
      */
-    public static final Character QUOT = '"';
+    public static Character QUOT = '"';
 
     /**
      * The Character '/'.
      */
-    public static final Character SLASH = '/';
+    public static Character SLASH = '/';
 
     /**
      * Creates an iterator for navigating Code Points in a string instead of
@@ -93,7 +93,7 @@ public class XML {
      * @see <a href=
      * "http://stackoverflow.com/a/21791059/6030888">http://stackoverflow.com/a/21791059/6030888</a>
      */
-    private static Iterable<Integer> codePointIterator(final String string) {
+    private static Iterable<Integer> codePointIterator(String string) {
         return new Iterable<Integer>() {
             @Override
             public Iterator<Integer> iterator() {
@@ -138,7 +138,7 @@ public class XML {
      */
     static String escape(String string) {
         StringBuilder sb = new StringBuilder(string.length());
-        for (final int cp : codePointIterator(string)) {
+        for (int cp : codePointIterator(string)) {
             switch (cp) {
                 case '&':
                     sb.append("&amp;");
@@ -205,9 +205,9 @@ public class XML {
         for (int i = 0, length = string.length(); i < length; i++) {
             char c = string.charAt(i);
             if (c == '&') {
-                final int semic = string.indexOf(';', i);
+                int semic = string.indexOf(';', i);
                 if (semic > i) {
-                    final String entity = string.substring(i + 1, semic);
+                    String entity = string.substring(i + 1, semic);
                     sb.append(XMLTokener.unescapeEntity(entity));
                     // skip past the entity we just parsed.
                     i += entity.length() + 1;
@@ -577,7 +577,7 @@ public class XML {
      * @return A string.
      * @throws JSONException Thrown if there is an error parsing the string
      */
-    public static String toString(final Object object, final String tagName)
+    public static String toString(Object object, String tagName)
             throws JSONException {
         StringBuilder sb = new StringBuilder();
         JSONArray ja;
@@ -596,7 +596,7 @@ public class XML {
             // Loop thru the keys.
             // don't use the new entrySet accessor to maintain Android Support
             jo = (JSONObject) object;
-            for (final String key : jo.keySet()) {
+            for (String key : jo.keySet()) {
                 Object value = jo.opt(key);
                 if (value == null) {
                     value = "";

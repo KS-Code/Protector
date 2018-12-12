@@ -33,11 +33,11 @@ public class PlayerUpdateSignBlocker extends PacketAdapter {
         PlayerUpdateSignBlocker.PlayerUpdateSignMap = new HashMap<>();
     }
 
-    public PlayerUpdateSignBlocker(final Main plugin) {
+    public PlayerUpdateSignBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.UPDATE_SIGN);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

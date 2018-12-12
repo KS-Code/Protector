@@ -37,7 +37,7 @@ public class HTTP {
     /**
      * Carriage return/line feed.
      */
-    public static final String CRLF = "\r\n";
+    public static String CRLF = "\r\n";
 
     /**
      * Convert an HTTP header string into a JSONObject. It can be a request
@@ -150,7 +150,7 @@ public class HTTP {
         }
         sb.append(CRLF);
         // Don't use the new entrySet API to maintain Android support
-        for (final String key : jo.keySet()) {
+        for (String key : jo.keySet()) {
             String value = jo.optString(key);
             if (!"HTTP-Version".equals(key) && !"Status-Code".equals(key) &&
                     !"Reason-Phrase".equals(key) && !"Method".equals(key) &&

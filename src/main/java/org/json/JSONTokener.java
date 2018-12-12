@@ -63,7 +63,7 @@ public class JSONTokener {
     /**
      * Reader for the input.
      */
-    private final Reader reader;
+    private Reader reader;
     /**
      * flag to indicate that a previous character was requested.
      */

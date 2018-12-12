@@ -33,11 +33,11 @@ public class PlayerEntityActionBlocker extends PacketAdapter {
         PlayerEntityActionBlocker.PlayerEntityActionMap = new HashMap<>();
     }
 
-    public PlayerEntityActionBlocker(final Main plugin) {
+    public PlayerEntityActionBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.ENTITY_ACTION);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

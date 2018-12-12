@@ -33,11 +33,11 @@ public class PlayerSetCreativeSlotBlocker extends PacketAdapter {
         PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap = new HashMap<>();
     }
 
-    public PlayerSetCreativeSlotBlocker(final Main plugin) {
+    public PlayerSetCreativeSlotBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.SET_CREATIVE_SLOT);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

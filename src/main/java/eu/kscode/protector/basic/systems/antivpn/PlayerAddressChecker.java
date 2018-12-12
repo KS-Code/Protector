@@ -35,7 +35,7 @@ public class PlayerAddressChecker implements Listener {
  */
 
     @EventHandler
-    public void onLogin(final AsyncPlayerPreLoginEvent e) {
+    public void onLogin(AsyncPlayerPreLoginEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.anti-vpn.enable")) {
             if (this.isProxy(e.getAddress().getHostAddress())) {
                 Logger.warn(e.getName() + "'s use vpn or proxy");
@@ -44,10 +44,10 @@ public class PlayerAddressChecker implements Listener {
         }
     }
 
-    private boolean isProxy(final String address) {
+    private boolean isProxy(String address) {
         try {
-            final String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address).openStream()));
-            final JSONObject obj = new JSONObject(json);
+            String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address).openStream()));
+            JSONObject obj = new JSONObject(json);
             if (obj.getJSONObject(address).get("proxy").equals("yes")) {
                 return true;
             }

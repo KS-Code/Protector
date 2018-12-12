@@ -32,11 +32,11 @@ public class PlayerItemStackListener extends PacketAdapter {
     /*
         -> TUTAJ JEST NAJWIEKSZY SYF W TYM CALYM PLUGINIE
      */
-    public PlayerItemStackListener(final Main plugin) {
+    public PlayerItemStackListener(Main plugin) {
         super(plugin, PacketType.Play.Client.BLOCK_PLACE, PacketType.Play.Client.WINDOW_CLICK, PacketType.Play.Client.SET_CREATIVE_SLOT);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.PagesLimiter.enable")) {
             if (e.getPlayer() == null) {
                 return;
@@ -167,7 +167,7 @@ public class PlayerItemStackListener extends PacketAdapter {
                     AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&8>> &cYour book has too many pages\n&8>> &7Pages limit: &4(" + Main.getInstance().getConfig().getInt("A00Protector.PagesLimiter.limit") + ")\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r &4A&C00&7Protector &8&m-)---");
                 }
             }
-            final NbtCompound root = (NbtCompound) NbtFactory.fromItemTag(itemStack);
+            NbtCompound root = (NbtCompound) NbtFactory.fromItemTag(itemStack);
             if (root.containsKey(root.getName())) {
                 NbtList<String> pages = root.getList(root.getName());
                 if (pages.size() > Main.getInstance().getConfig().getInt("A00Protector.PagesLimiter.limit")) {

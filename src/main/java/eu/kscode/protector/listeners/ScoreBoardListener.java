@@ -35,11 +35,11 @@ public class ScoreBoardListener implements Listener {
     /*
     -> TO CHYBA WYPIERDOLE
  */
-    private void update(final Player player) {
+    private void update(Player player) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
             int ping = ((CraftPlayer) player).getHandle().ping;
-            final long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            final Objective o = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective("A00Protector", "A00Protector");
+            long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+            Objective o = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective("A00Protector", "A00Protector");
             o.setDisplaySlot(DisplaySlot.SIDEBAR);
             o.setDisplayName(A00Util.fixColors("&8●&r &4A&c00&7Protector &8●"));
             o.getScore(" §a§r ").setScore(11);
@@ -60,7 +60,7 @@ public class ScoreBoardListener implements Listener {
     }
 
     @EventHandler
-    public void onJoin(final PlayerJoinEvent e) {
+    public void onJoin(PlayerJoinEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
             new BukkitRunnable() {
                 public void run() {

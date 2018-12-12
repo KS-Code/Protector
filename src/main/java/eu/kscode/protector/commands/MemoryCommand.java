@@ -24,8 +24,8 @@ import org.bukkit.command.CommandSender;
     */
 public class MemoryCommand implements CommandExecutor {
 
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String commandLabel, final String[] args) {
-        final long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         sender.sendMessage("");
         sender.sendMessage(A00Util.fixColors("&8&m-----(--&r &4A&C00&7Protector &8:|: &7Memory &8&m--)-----"));
         sender.sendMessage("");

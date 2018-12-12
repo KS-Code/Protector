@@ -54,7 +54,7 @@ SOFTWARE.
 public class JSONPointer {
 
     // used for URL encoding and decoding
-    private static final String ENCODING = "utf-8";
+    private static String ENCODING = "utf-8";
 
     /**
      * This class allows the user to build a JSONPointer in steps, using
@@ -63,7 +63,7 @@ public class JSONPointer {
     public static class Builder {
 
         // Segments for the eventual JSONPointer string
-        private final List<String> refTokens = new ArrayList<String>();
+        private List<String> refTokens = new ArrayList<String>();
 
         /**
          * Creates a {@code JSONPointer} instance using the tokens previously set using the
@@ -126,7 +126,7 @@ public class JSONPointer {
     }
 
     // Segments for the JSONPointer string
-    private final List<String> refTokens;
+    private List<String> refTokens;
 
     /**
      * Pre-parses and initializes a new {@code JSONPointer} instance. If you want to
@@ -136,7 +136,7 @@ public class JSONPointer {
      * @param pointer the JSON String or URI Fragment representation of the JSON pointer.
      * @throws IllegalArgumentException if {@code pointer} is not a valid JSON pointer
      */
-    public JSONPointer(final String pointer) {
+    public JSONPointer(String pointer) {
         if (pointer == null) {
             throw new NullPointerException("pointer cannot be null");
         }
@@ -168,11 +168,11 @@ public class JSONPointer {
                 // or single slash at the end of a string ( obj/test/ )
                 this.refTokens.add("");
             } else if (slashIdx >= 0) {
-                final String token = refs.substring(prevSlashIdx, slashIdx);
+                String token = refs.substring(prevSlashIdx, slashIdx);
                 this.refTokens.add(unescape(token));
             } else {
                 // last item after separator, or no separator at all.
-                final String token = refs.substring(prevSlashIdx);
+                String token = refs.substring(prevSlashIdx);
                 this.refTokens.add(unescape(token));
             }
         } while (slashIdx >= 0);

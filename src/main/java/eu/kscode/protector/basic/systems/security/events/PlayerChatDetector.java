@@ -28,7 +28,7 @@ public class PlayerChatDetector implements Listener {
     -> TUTAJ TROCHE ZJEBALEM MATCHES
  */
     @EventHandler
-    public void onPlayerChat(final AsyncPlayerChatEvent e) {
+    public void onPlayerChat(AsyncPlayerChatEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

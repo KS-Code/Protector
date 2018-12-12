@@ -33,11 +33,11 @@ public class PlayerCustomPayLoadBlocker extends PacketAdapter {
         PlayerCustomPayLoadBlocker.PlayerCustomPayLoadMap = new HashMap<>();
     }
 
-    public PlayerCustomPayLoadBlocker(final Main plugin) {
+    public PlayerCustomPayLoadBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.CUSTOM_PAYLOAD);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

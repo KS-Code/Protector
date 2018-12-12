@@ -35,7 +35,7 @@ public class PlayerDropItemDetector implements Listener {
     }
 
     @EventHandler
-    public void PlayerDropItem(final PlayerDropItemEvent e) {
+    public void PlayerDropItem(PlayerDropItemEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

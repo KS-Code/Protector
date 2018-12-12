@@ -10,14 +10,14 @@ public class JSONException extends RuntimeException {
     /**
      * Serialization ID
      */
-    private static final long serialVersionUID = 0;
+    private static long serialVersionUID = 0;
 
     /**
      * Constructs a JSONException with an explanatory message.
      *
      * @param message Detail about the reason for the exception.
      */
-    public JSONException(final String message) {
+    public JSONException(String message) {
         super(message);
     }
 
@@ -27,7 +27,7 @@ public class JSONException extends RuntimeException {
      * @param message Detail about the reason for the exception.
      * @param cause   The cause.
      */
-    public JSONException(final String message, final Throwable cause) {
+    public JSONException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -36,7 +36,7 @@ public class JSONException extends RuntimeException {
      *
      * @param cause The cause.
      */
-    public JSONException(final Throwable cause) {
+    public JSONException(Throwable cause) {
         super(cause.getMessage(), cause);
     }
 

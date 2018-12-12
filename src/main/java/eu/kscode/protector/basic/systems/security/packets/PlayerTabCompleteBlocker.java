@@ -33,11 +33,11 @@ public class PlayerTabCompleteBlocker extends PacketAdapter {
         PlayerTabCompleteBlocker.PlayerTabCompleteMap = new HashMap<>();
     }
 
-    public PlayerTabCompleteBlocker(final Main plugin) {
+    public PlayerTabCompleteBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.TAB_COMPLETE);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

@@ -44,9 +44,9 @@ public class PlayerConnectionListener implements Listener {
     }
 
     @EventHandler
-    public void onConnect(final AsyncPlayerPreLoginEvent e) {
+    public void onConnect(AsyncPlayerPreLoginEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.ping-motd.enable")) {
-            final InetAddress ip = e.getAddress();
+            InetAddress ip = e.getAddress();
             if (!this.pinged.contains(ip)) {
                 e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.translateAlternateColorCodes('&', "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.antybot.ping-motd.kick-message")));
             }
@@ -67,16 +67,16 @@ public class PlayerConnectionListener implements Listener {
     }
 
     @EventHandler
-    public void onPing(final ServerListPingEvent e) {
+    public void onPing(ServerListPingEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.ping-motd.enable")) {
-            final InetAddress ip = e.getAddress();
+            InetAddress ip = e.getAddress();
             this.pinged.add(ip);
             Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> PlayerConnectionListener.this.pinged.remove(ip), 400L);
         }
     }
 
     @EventHandler
-    public void AntyBotDubbleJoin(final PlayerJoinEvent e) {
+    public void AntyBotDubbleJoin(PlayerJoinEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.dubble-join.enable")) {
             if (!e.getPlayer().hasPlayedBefore()) {
                 AKickManager.AKickManager2(e.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.antybot.double-join.kick-message"));

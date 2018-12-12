@@ -31,13 +31,13 @@ import java.util.Collections;
     */
 public class A00Util {
 
-    public static String fixColors(final String msg) {
+    public static String fixColors(String msg) {
         return msg.replaceAll("&", "§").replaceAll(">>", "»");
     }
 
 
-    public static void sendActionBar(final Player player, final String text) {
-        final PacketPlayOutChat bar = new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + text + "\"}"), (byte) 2);
+    public static void sendActionBar(Player player, String text) {
+        PacketPlayOutChat bar = new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + text + "\"}"), (byte) 2);
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
     }
 

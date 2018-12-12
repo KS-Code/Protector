@@ -34,11 +34,11 @@ public class PlayerUseEntityBlocker extends PacketAdapter {
 
     }
 
-    public PlayerUseEntityBlocker(final Main plugin) {
+    public PlayerUseEntityBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.USE_ENTITY);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

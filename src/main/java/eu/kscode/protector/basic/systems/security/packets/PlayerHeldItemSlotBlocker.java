@@ -33,11 +33,11 @@ public class PlayerHeldItemSlotBlocker extends PacketAdapter {
         PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap = new HashMap<>();
     }
 
-    public PlayerHeldItemSlotBlocker(final Main plugin) {
+    public PlayerHeldItemSlotBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.HELD_ITEM_SLOT);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

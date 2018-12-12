@@ -33,11 +33,11 @@ public class PlayerCloseWindowBlocker extends PacketAdapter {
         PlayerCloseWindowBlocker.PlayerCloseWindowMap = new HashMap<>();
     }
 
-    public PlayerCloseWindowBlocker(final Main plugin) {
+    public PlayerCloseWindowBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.CLOSE_WINDOW);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

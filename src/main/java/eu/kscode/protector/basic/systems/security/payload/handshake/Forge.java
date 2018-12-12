@@ -26,7 +26,7 @@ public class Forge implements PluginMessageListener {
     public Forge() {
     }
 
-    public void onPluginMessageReceived(final String channel, final Player player, final byte[] value) {
+    public void onPluginMessageReceived(String channel, Player player, byte[] value) {
         if (Main.getInstance().getConfig().getBoolean("CustomPayLoad.Forge.enable")) {
             if (channel.equalsIgnoreCase("FML|MP") || channel.equalsIgnoreCase("FML|HS") || channel.contains("FML")) {
                 AKickManager.AKickManager2(player.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("CustomPayLoad.Forge.kick-message"));

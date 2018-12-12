@@ -425,8 +425,8 @@ public class JSONML {
 // Emit the attributes
 
             // Don't use the new entrySet API to maintain Android support
-            for (final String key : jo.keySet()) {
-                final Object value = jo.opt(key);
+            for (String key : jo.keySet()) {
+                Object value = jo.opt(key);
                 XML.noSpace(key);
                 if (value != null) {
                     sb.append(' ');
@@ -505,7 +505,7 @@ public class JSONML {
 //Emit the attributes
 
         // Don't use the new entrySet API to maintain Android support
-        for (final String key : jo.keySet()) {
+        for (String key : jo.keySet()) {
             if (!"tagName".equals(key) && !"childNodes".equals(key)) {
                 XML.noSpace(key);
                 value = jo.opt(key);

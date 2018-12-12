@@ -25,7 +25,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 public class PlayerClickListener implements Listener {
 
     @EventHandler
-    public void onClick(final InventoryClickEvent e) {
+    public void onClick(InventoryClickEvent e) {
         if (A00Util.fixColors("&8&m----(--&r &4A&C00&7Protector &8&m--)----").equalsIgnoreCase(e.getInventory().getName())) {
             e.setCancelled(true);
         }

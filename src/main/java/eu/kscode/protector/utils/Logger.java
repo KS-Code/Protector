@@ -21,11 +21,11 @@ public class Logger {
     /*
         -> XD
      */
-    public static void info(final String info) {
+    public static void info(String info) {
         System.out.println(" [?] A00Protector -> " + info);
     }
 
-    public static void warn(final String warn) {
+    public static void warn(String warn) {
         System.err.println(" [!] A00Protector -> " + warn);
     }
 

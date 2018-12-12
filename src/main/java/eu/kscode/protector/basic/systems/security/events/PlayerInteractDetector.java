@@ -34,7 +34,7 @@ public class PlayerInteractDetector implements Listener {
     }
 
     @EventHandler
-    public void onPlayerInteract(final PlayerInteractEvent e) {
+    public void onPlayerInteract(PlayerInteractEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

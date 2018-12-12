@@ -86,7 +86,7 @@ public class JSONArray implements Iterable<Object> {
     /**
      * The arrayList where the JSONArray's properties are kept.
      */
-    private final ArrayList<Object> myArrayList;
+    private ArrayList<Object> myArrayList;
 
     /**
      * Construct an empty JSONArray.
@@ -520,11 +520,11 @@ public class JSONArray implements Iterable<Object> {
      * @return The value.
      */
     public double optDouble(int index, double defaultValue) {
-        final Number val = this.optNumber(index, null);
+        Number val = this.optNumber(index, null);
         if (val == null) {
             return defaultValue;
         }
-        final double doubleValue = val.doubleValue();
+        double doubleValue = val.doubleValue();
         // if (Double.isNaN(doubleValue) || Double.isInfinite(doubleValue)) {
         // return defaultValue;
         // }
@@ -553,11 +553,11 @@ public class JSONArray implements Iterable<Object> {
      * @return The value.
      */
     public float optFloat(int index, float defaultValue) {
-        final Number val = this.optNumber(index, null);
+        Number val = this.optNumber(index, null);
         if (val == null) {
             return defaultValue;
         }
-        final float floatValue = val.floatValue();
+        float floatValue = val.floatValue();
         // if (Float.isNaN(floatValue) || Float.isInfinite(floatValue)) {
         // return floatValue;
         // }
@@ -586,7 +586,7 @@ public class JSONArray implements Iterable<Object> {
      * @return The value.
      */
     public int optInt(int index, int defaultValue) {
-        final Number val = this.optNumber(index, null);
+        Number val = this.optNumber(index, null);
         if (val == null) {
             return defaultValue;
         }
@@ -711,7 +711,7 @@ public class JSONArray implements Iterable<Object> {
      * @return The value.
      */
     public long optLong(int index, long defaultValue) {
-        final Number val = this.optNumber(index, null);
+        Number val = this.optNumber(index, null);
         if (val == null) {
             return defaultValue;
         }
@@ -1268,7 +1268,7 @@ public class JSONArray implements Iterable<Object> {
                     throw new JSONException("Unable to write JSONArray value at index: 0", e);
                 }
             } else if (length != 0) {
-                final int newindent = indent + indentFactor;
+                int newindent = indent + indentFactor;
 
                 for (int i = 0; i < length; i += 1) {
                     if (commanate) {

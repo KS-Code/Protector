@@ -24,7 +24,7 @@ import org.bukkit.event.Listener;
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 public class PlayerPingListener implements Listener {
-    public void PlayerPing(final Player player) {
+    public void PlayerPing(Player player) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.CheckPing.enable")) {
             int ping = ((CraftPlayer) player).getHandle().ping;
             if (ping > Main.getInstance().getConfig().getInt("A00Protector.CheckPing.limit")) {

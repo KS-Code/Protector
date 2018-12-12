@@ -66,7 +66,7 @@ public class Property {
         Properties properties = new Properties();
         if (jo != null) {
             // Don't use the new entrySet API to maintain Android support
-            for (final String key : jo.keySet()) {
+            for (String key : jo.keySet()) {
                 Object value = jo.opt(key);
                 if (!JSONObject.NULL.equals(value)) {
                     properties.put(key, value.toString());

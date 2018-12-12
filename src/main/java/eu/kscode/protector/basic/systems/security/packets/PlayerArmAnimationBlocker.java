@@ -33,11 +33,11 @@ public class PlayerArmAnimationBlocker extends PacketAdapter {
         PlayerArmAnimationBlocker.PlayerArmAnimationMap = new HashMap<>();
     }
 
-    public PlayerArmAnimationBlocker(final Main plugin) {
+    public PlayerArmAnimationBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.ARM_ANIMATION);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

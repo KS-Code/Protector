@@ -24,7 +24,7 @@ import org.bukkit.entity.Player;
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 public class ProtectorDevelopersCommand implements CommandExecutor {
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage(A00Util.fixColors(" &8* &4A&C00&7Protector &8:|: &7This command it's for player not console"));
             return false;

@@ -27,7 +27,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class PlayerChatListener implements Listener {
 
     @EventHandler
-    public void onChat(final AsyncPlayerChatEvent e) {
+    public void onChat(AsyncPlayerChatEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.bad-message.enable")) {
             if (Main.getInstance().getConfig().getStringList("A00Protector.bad-message.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);
@@ -37,7 +37,7 @@ public class PlayerChatListener implements Listener {
     }
 
     @EventHandler
-    public void onBadCommand(final PlayerCommandPreprocessEvent e) {
+    public void onBadCommand(PlayerCommandPreprocessEvent e) {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.bad-command.enable")) {
             if (Main.getInstance().getConfig().getStringList("A00Protector.bad-command.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);

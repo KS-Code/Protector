@@ -33,11 +33,11 @@ public class PlayerResourcePackStatusBlocker extends PacketAdapter {
         PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap = new HashMap<>();
     }
 
-    public PlayerResourcePackStatusBlocker(final Main plugin) {
+    public PlayerResourcePackStatusBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.RESOURCE_PACK_STATUS);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

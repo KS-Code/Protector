@@ -33,11 +33,11 @@ public class PlayerPostionBlocker extends PacketAdapter {
         PlayerPostionBlocker.PlayerPositionMap = new HashMap<>();
     }
 
-    public PlayerPostionBlocker(final Main plugin) {
+    public PlayerPostionBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.POSITION);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

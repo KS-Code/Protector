@@ -34,7 +34,7 @@ public class PlayerAnimationDetector implements Listener {
     }
 
     @EventHandler
-    public void onPlayerAnimation(final PlayerAnimationEvent e) {
+    public void onPlayerAnimation(PlayerAnimationEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

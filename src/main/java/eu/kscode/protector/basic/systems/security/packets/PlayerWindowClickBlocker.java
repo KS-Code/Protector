@@ -33,11 +33,11 @@ public class PlayerWindowClickBlocker extends PacketAdapter {
         PlayerWindowClickBlocker.PlayerWindowClickMap = new HashMap<>();
     }
 
-    public PlayerWindowClickBlocker(final Main plugin) {
+    public PlayerWindowClickBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.WINDOW_CLICK);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

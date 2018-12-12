@@ -25,7 +25,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 public class PlayerJoinAndQuitListener implements Listener {
 
     @EventHandler
-    public void onJoin(final PlayerJoinEvent e) {
+    public void onJoin(PlayerJoinEvent e) {
         e.getPlayer().sendMessage(A00Util.fixColors(" &8* &4A&C00&7Protector &8:|: &7This sever has: &8[&4A&C00&7Protector&8]"));
         A00Util.sendActionBar(e.getPlayer(), A00Util.fixColors("&4A&C00&7Protector &8:|: &cThis server has protection against lag exploits and crashes"));
 

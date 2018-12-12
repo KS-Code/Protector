@@ -28,15 +28,15 @@ public class ServerCommand implements CommandExecutor {
     /*
         -> NAD TYM MUSZE POPRACOWAC
      */
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String commandLabel, final String[] args) {
-        final StringBuilder sb = new StringBuilder(A00Util.fixColors("&8>> &7TPS &8(&7Current&8) &8(&75min ago&8) &8(&715min ago&8): &c"));
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        StringBuilder sb = new StringBuilder(A00Util.fixColors("&8>> &7TPS &8(&7Current&8) &8(&75min ago&8) &8(&715min ago&8): &c"));
         double[] recentTps;
         for (int length = (recentTps = MinecraftServer.getServer().recentTps).length, i = 0; i < length; ++i) {
-            final double tps = recentTps[i];
+            double tps = recentTps[i];
             sb.append(Math.min(Math.round(tps * 100.0) / 100.0, 20.0));
             sb.append("  ");
         }
-        final long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         sender.sendMessage("");
         sender.sendMessage(A00Util.fixColors("&8&m-----(--&r &4A&C00&7Protector &8:|: &7Server &8&m--)-----"));
         sender.sendMessage("");

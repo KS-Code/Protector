@@ -59,7 +59,7 @@ SOFTWARE.
  * @version 2016-08-08
  */
 public class JSONWriter {
-    private static final int maxdepth = 200;
+    private static int maxdepth = 200;
 
     /**
      * The comma flag determines if a comma should be output before the next
@@ -80,7 +80,7 @@ public class JSONWriter {
     /**
      * The object/array stack.
      */
-    private final JSONObject stack[];
+    private JSONObject stack[];
 
     /**
      * The stack top index. A value of 0 indicates that the stack is empty.
@@ -346,7 +346,7 @@ public class JSONWriter {
         }
         if (value instanceof Number) {
             // not all Numbers may match actual JSON Numbers. i.e. Fractions or Complex
-            final String numberAsString = JSONObject.numberToString((Number) value);
+            String numberAsString = JSONObject.numberToString((Number) value);
             if (JSONObject.NUMBER_PATTERN.matcher(numberAsString).matches()) {
                 // Close enough to a JSON number that we will return it unquoted
                 return numberAsString;

@@ -33,11 +33,11 @@ public class PlayerSettingsBlocker extends PacketAdapter {
         PlayerSettingsBlocker.PlayerSettingsMap = new HashMap<>();
     }
 
-    public PlayerSettingsBlocker(final Main plugin) {
+    public PlayerSettingsBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.SETTINGS);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

@@ -33,11 +33,11 @@ public class PlayerBlockPlaceBlocker extends PacketAdapter {
         PlayerBlockPlaceBlocker.PlayerBlockPlaceMap = new HashMap<>();
     }
 
-    public PlayerBlockPlaceBlocker(final Main plugin) {
+    public PlayerBlockPlaceBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.BLOCK_PLACE);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

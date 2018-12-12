@@ -33,11 +33,11 @@ public class PlayerLookBlocker extends PacketAdapter {
         PlayerLookBlocker.PlayerLookMap = new HashMap<>();
     }
 
-    public PlayerLookBlocker(final Main plugin) {
+    public PlayerLookBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.LOOK, PacketType.Play.Client.POSITION_LOOK);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

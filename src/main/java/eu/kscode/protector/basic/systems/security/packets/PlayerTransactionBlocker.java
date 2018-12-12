@@ -33,11 +33,11 @@ public class PlayerTransactionBlocker extends PacketAdapter {
         PlayerTransactionBlocker.PlayerTransactionMap = new HashMap<>();
     }
 
-    public PlayerTransactionBlocker(final Main plugin) {
+    public PlayerTransactionBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.TRANSACTION);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

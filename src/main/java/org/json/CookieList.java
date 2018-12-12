@@ -70,10 +70,10 @@ public class CookieList {
      */
     public static String toString(JSONObject jo) throws JSONException {
         boolean b = false;
-        final StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         // Don't use the new entrySet API to maintain Android support
-        for (final String key : jo.keySet()) {
-            final Object value = jo.opt(key);
+        for (String key : jo.keySet()) {
+            Object value = jo.opt(key);
             if (!JSONObject.NULL.equals(value)) {
                 if (b) {
                     sb.append(';');

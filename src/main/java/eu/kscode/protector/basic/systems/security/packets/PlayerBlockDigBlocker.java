@@ -33,11 +33,11 @@ public class PlayerBlockDigBlocker extends PacketAdapter {
         PlayerBlockDigBlocker.PlayerBlockDigMap = new HashMap<>();
     }
 
-    public PlayerBlockDigBlocker(final Main plugin) {
+    public PlayerBlockDigBlocker(Main plugin) {
         super(plugin, PacketType.Play.Client.BLOCK_DIG);
     }
 
-    public void onPacketReceiving(final PacketEvent e) {
+    public void onPacketReceiving(PacketEvent e) {
         if (e.getPlayer() == null) {
             return;
         }

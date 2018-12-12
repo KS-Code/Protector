@@ -23,7 +23,7 @@ import org.bukkit.command.CommandSender;
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 public class HelpersCommand implements CommandExecutor {
-    public boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         sender.sendMessage(A00Util.fixColors("&7 "));
         sender.sendMessage(A00Util.fixColors("&8&m---(-&r &4&lHelpers &8&m-)---"));
         sender.sendMessage(A00Util.fixColors(" &8>> &cZimzzer &8:|: &7Discord: &4ஜ      zιмzzєяя      ஜ#6233 "));
