@@ -1,0 +1,117 @@
+A00Protector:
+  crash:
+    handle-disconnect:
+      enable: false
+    kick-player:
+      enable: false
+    close-socket:
+      enable: true
+    crash-player:
+      enable: false
+    ban:
+      enable: false
+  anti-vpn:
+    enable: true
+    kick-message: '&7Plase do not use vpn &7Maybe restart your router'
+  PagesLimiter:
+    enable: true
+    limit: 5
+  CheckPing:
+    enable: true
+    limit: 600
+    kick-message: '&7Your ping is too big'
+  ScoreBoard:
+    enable: true
+  nick-check:
+    enable: true
+    kick-message: '&7Please change your nickname. (This nickname is blocked)'
+    list:
+    - "Stulejka"
+  antybot:
+    ping-motd:
+      enable: false
+      kick-message: '&7Please add the server to the list and join the server'
+    double-join:
+      enable: true
+      kick-message: '&7Please join the server again'
+  bad-message:
+    enable: true
+    notification: '&7Message has been blocked'
+    list:
+    - "fuck"
+  bad-command:
+    enable: true
+    notification: '&7This command is blocked'
+    list:
+    - "/pl"
+    - "/plugins"
+  payload:
+    enable: true
+    kick-message: '&7This chnnel has been blocked'
+  exploits:
+    pex:
+      enable: true
+      notification: '&7Pex exploit has been blocked'
+    worldedit:
+      enable: true
+      notification: '&7WorldEdit exploit has been blocked'
+    redstone-lag-exploit:
+      enable: true
+      max-change: 60
+    book-max-enchant-exploit:
+      enable: true
+      kick-message: '&7This book has been blocked'
+
+CustomPayLoad:
+  WorldDownloader:
+    enable: true
+    kick-message: 'NO NO NO Do not download the server map'
+  Forge:
+    enable: false
+    kick-message: 'Do not use forge client :)'
+  Checker:
+    enable: true
+  PacketLimit:
+    enable: true
+    limit: 20
+
+ServerLagAndCrashDetector:
+  enable: true
+  Blocker:
+    ArmAnimation:
+      limit: 200
+    BlockDig:
+      limit: 160
+    BlockPlace:
+      limit: 80
+    CloseWindow:
+      limit: 80
+    UseEntity:
+      limit: 600
+    BookEdit:
+      limit: 5
+    EnchantItem:
+      limit: 50
+    EntityAction:
+      limit: 500
+    HeldItemSlot:
+      limit: 40
+    Look:
+      limit: 400
+    Position:
+      limit: 400
+    ResourcePackStatus:
+      limit: 50
+    SetCreativeSlot:
+      limit: 80
+    Settings:
+      limit: 50
+    TabComplete:
+      limit: 50
+    Transaction:
+      limit: 100
+    UpdateSign:
+      limit: 60
+    WindowClick:
+      limit: 80
+    

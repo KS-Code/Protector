@@ -1,0 +1,23 @@
+name: A00Protector
+version: 2.7-Stable
+author: KSCode.eu
+main: eu.kscode.protector.basic.Main
+website: 'https://discord.gg/3gFPgQ8'
+prefix:
+depend: ['ProtocolLib']
+description: This plugin protects your server :)
+commands:
+  Protector:
+    aliases: [a00p, a00, antycrash, anticrash]
+  ProtectorReload:
+    aliases: [prl, protectorrl, preload, a00rl]
+  ProtectorDevelopers:
+    aliases: [a00dev, pdev, developers]
+  Helpers:
+    aliases: [a00help, phelpers]
+  Server:
+    aliases: [info, information, informations]
+  Memory:
+    aliases: [ram]
+      
+      
