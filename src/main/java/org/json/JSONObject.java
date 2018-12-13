@@ -303,7 +303,6 @@ public class JSONObject {
      * new JSONObject.
      * <p>
      * The key is formed by removing the <code>"get"</code> or <code>"is"</code>
-     * " + Main.getInstance().getConfig().getString("A00Protector.prefix") + ". If the second remaining character is not upper case, then the
      * first character is converted to lower case.
      * <p>
      * Methods that are <code>static</code>, return <code>void</code>,
@@ -1475,7 +1474,7 @@ public class JSONObject {
      * implementations and interfaces has the annotation. Returns the depth of the
      * annotation in the hierarchy.
      *
-     * @param <A>             type of the annotation
+     * @param <>             type of the annotation
      * @param m               method to check
      * @param annotationClass annotation to look for
      * @return Depth of the annotation or -1 if the annotation is not on the method.
