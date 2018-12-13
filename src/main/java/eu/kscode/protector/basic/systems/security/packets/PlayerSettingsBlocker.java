@@ -49,7 +49,7 @@ public class PlayerSettingsBlocker extends PacketAdapter {
             }
             if (PlayerSettingsBlocker.PlayerSettingsMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.Settings.limit")) {
                 e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(Settings)\n&8&m---(-&r &4A&C00&7Protector &8&m-)---");
+                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(Settings)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
             }
         }
     }

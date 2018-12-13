@@ -26,11 +26,11 @@ import org.bukkit.command.CommandSender;
 public class ProtectorReloadCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!sender.hasPermission("a00protector.reload")) {
-            sender.sendMessage(A00Util.fixColors(" &8* &4A&C00&7Protector &8:|: &cYou don't have permission: &8(&4a00protector.reload&8)"));
+            sender.sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &cYou don't have permission: &8(&4a00protector.reload&8)"));
             return false;
         }
         Main.getInstance().reloadConfig();
-        sender.sendMessage(A00Util.fixColors(" &8* &4A&C00&7Protector &8:|: &7Config has &csuccessfully &7reloaded"));
+        sender.sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Config has &csuccessfully &7reloaded"));
         return false;
     }
 }

@@ -1,4 +1,5 @@
 A00Protector:
+  prefix: '&4A&C00&7Protector'
   crash:
     handle-disconnect:
       enable: false

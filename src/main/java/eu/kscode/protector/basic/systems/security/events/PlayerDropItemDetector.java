@@ -47,7 +47,7 @@ public class PlayerDropItemDetector implements Listener {
             }
             if (PlayerDropItemDetector.PlayerDropItemMap.get(e.getPlayer().getName()) > 64) {
                 e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(ItemDrop)\n&8>> &7Limit: &4(64/2)\n&8&m---(-&r &4A&C00&7Protector &8&m-)---");
+                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(ItemDrop)\n&8>> &7Limit: &4(64/2)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
             }
         }
     }

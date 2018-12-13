@@ -41,7 +41,7 @@ public class ScoreBoardListener implements Listener {
             long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
             Objective o = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective("A00Protector", "A00Protector");
             o.setDisplaySlot(DisplaySlot.SIDEBAR);
-            o.setDisplayName(A00Util.fixColors("&8●&r &4A&c00&7Protector &8●"));
+            o.setDisplayName(A00Util.fixColors("&8●&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8●"));
             o.getScore(" §a§r ").setScore(11);
             o.getScore(" §8» §7Imformations §8:|: §cServer").setScore(10);
             o.getScore(" §3§r ").setScore(9);

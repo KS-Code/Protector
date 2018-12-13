@@ -39,7 +39,7 @@ public class PlayerAddressChecker implements Listener {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.anti-vpn.enable")) {
             if (this.isProxy(e.getAddress().getHostAddress())) {
                 Logger.warn(e.getName() + "'s use vpn or proxy");
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.anti-vpn.kick-message")));
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.anti-vpn.kick-message")));
             }
         }
     }

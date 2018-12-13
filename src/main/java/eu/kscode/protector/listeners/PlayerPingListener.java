@@ -28,7 +28,7 @@ public class PlayerPingListener implements Listener {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.CheckPing.enable")) {
             int ping = ((CraftPlayer) player).getHandle().ping;
             if (ping > Main.getInstance().getConfig().getInt("A00Protector.CheckPing.limit")) {
-                player.getPlayer().kickPlayer(A00Util.fixColors("&8&m---(-&r &4A&C00&7Protector &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.CheckPing.kick-message")));
+                player.getPlayer().kickPlayer(A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.CheckPing.kick-message")));
             }
         }
 

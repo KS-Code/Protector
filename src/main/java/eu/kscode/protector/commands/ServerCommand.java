@@ -1,5 +1,6 @@
 package eu.kscode.protector.commands;
 
+import eu.kscode.protector.basic.Main;
 import eu.kscode.protector.utils.A00Util;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.Bukkit;
@@ -38,7 +39,7 @@ public class ServerCommand implements CommandExecutor {
         }
         long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r &4A&C00&7Protector &8:|: &7Server &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
         sender.sendMessage("");
         sender.sendMessage(sb.substring(0, sb.length() - 2));
         sender.sendMessage("");
@@ -48,7 +49,7 @@ public class ServerCommand implements CommandExecutor {
         sender.sendMessage(A00Util.fixColors("&8>> &7Bukkit version: &c" + Bukkit.getBukkitVersion()));
         sender.sendMessage(A00Util.fixColors("&8>> &7Git Bukkit version: &c" + Bukkit.getServer().getVersion()));
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r &4A&C00&7Protector &8:|: &7Server &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
         sender.sendMessage("");
         return false;
     }

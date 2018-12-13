@@ -31,7 +31,7 @@ public class PlayerChatListener implements Listener {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.bad-message.enable")) {
             if (Main.getInstance().getConfig().getStringList("A00Protector.bad-message.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(A00Util.fixColors("&8* &4A&C00&7Protector &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-message.notification")));
+                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-message.notification")));
             }
         }
     }
@@ -41,7 +41,7 @@ public class PlayerChatListener implements Listener {
         if (Main.getInstance().getConfig().getBoolean("A00Protector.bad-command.enable")) {
             if (Main.getInstance().getConfig().getStringList("A00Protector.bad-command.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(A00Util.fixColors("&8* &4A&C00&7Protector &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-command.notification")));
+                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-command.notification")));
             }
 
         }

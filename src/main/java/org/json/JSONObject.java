@@ -303,7 +303,7 @@ public class JSONObject {
      * new JSONObject.
      * <p>
      * The key is formed by removing the <code>"get"</code> or <code>"is"</code>
-     * prefix. If the second remaining character is not upper case, then the
+     * " + Main.getInstance().getConfig().getString("A00Protector.prefix") + ". If the second remaining character is not upper case, then the
      * first character is converted to lower case.
      * <p>
      * Methods that are <code>static</code>, return <code>void</code>,

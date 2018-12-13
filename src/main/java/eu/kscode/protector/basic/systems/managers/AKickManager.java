@@ -47,7 +47,7 @@ public class AKickManager {
 
                     if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
                         Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** &4A&c00&7Protector &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
+                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
                         player.setBanned(true);
                     }
                 }
@@ -57,7 +57,7 @@ public class AKickManager {
 
                     if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
                         Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** &4A&c00&7Protector &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
+                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
                         player.setBanned(true);
                     }
                 }
@@ -67,7 +67,7 @@ public class AKickManager {
 
                     if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
                         Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** &4A&c00&7Protector &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
+                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
                         player.setBanned(true);
                     }
                 }
@@ -79,7 +79,7 @@ public class AKickManager {
 
                     if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
                         Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** &4A&c00&7Protector &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
+                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
                         player.setBanned(true);
                     }
                 }

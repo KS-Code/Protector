@@ -3,7 +3,6 @@ version: 2.7-Stable
 author: KSCode.eu
 main: eu.kscode.protector.basic.Main
 website: 'https://discord.gg/3gFPgQ8'
-prefix:
 depend: ['ProtocolLib']
 description: This plugin protects your server :)
 commands:
