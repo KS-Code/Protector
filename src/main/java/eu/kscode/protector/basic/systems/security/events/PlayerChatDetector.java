@@ -33,7 +33,7 @@ public class PlayerChatDetector implements Listener {
             return;
         }
         if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (e.getMessage() == null || !e.getMessage().matches("[a-zA-Z0-1]!@#$%^&*()-=_+~`; ' ':,.'\'/<>?|][}{'] ")) {
+            if (e.getMessage() == null /* DODAM TU COS*/) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Message has invalid characters"));
             }

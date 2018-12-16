@@ -44,7 +44,7 @@ public class ServerCommand implements CommandExecutor {
         sender.sendMessage(sb.substring(0, sb.length() - 2));
         sender.sendMessage("");
         sender.sendMessage(A00Util.fixColors("&8>> &7Cores: &c" + Runtime.getRuntime().availableProcessors()));
-        sender.sendMessage(A00Util.fixColors("&8>> &7Memory: &c" + usedMem / 1024L / 1024L + "MB"));
+        sender.sendMessage(A00Util.fixColors("&8>> &7Used Memory: &c" + usedMem / 1024L / 1024L + "MB"));
         sender.sendMessage(A00Util.fixColors("&8>> &7Version: &c" + MinecraftServer.getServer().getVersion()));
         sender.sendMessage(A00Util.fixColors("&8>> &7Bukkit version: &c" + Bukkit.getBukkitVersion()));
         sender.sendMessage(A00Util.fixColors("&8>> &7Git Bukkit version: &c" + Bukkit.getServer().getVersion()));

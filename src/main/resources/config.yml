@@ -12,8 +12,19 @@ A00Protector:
     ban:
       enable: false
   anti-vpn:
-    enable: true
-    kick-message: '&7Plase do not use vpn &7Maybe restart your router'
+    checkip:
+      enable: true
+      kick-message: '&7Plase do not use vpn &7Maybe restart your router'
+    country:
+      enable: true
+      kick-message: '&7Your country is blocked'
+      list:
+      - "Poland"
+    isocode:
+      enable: true
+      kick-message: '&7Your isocode is blocked'
+      list:
+      - "PL"
   PagesLimiter:
     enable: true
     limit: 5
@@ -115,4 +126,4 @@ ServerLagAndCrashDetector:
       limit: 60
     WindowClick:
       limit: 80
-    
+
