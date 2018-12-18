@@ -50,7 +50,7 @@ public class ClearMapsUtil {
             PlayerAnimationDetector.PlayerAnimationMap.clear();
             PlayerDropItemDetector.PlayerDropItemMap.clear();
             PlayerInteractDetector.PlayerInteractMap.clear();
-        }, 20L, 20L);
+        }, 30L, 30L);
     }
 
     public static void start2() {

@@ -55,6 +55,10 @@ public class PlayerItemStackListener extends PacketAdapter {
                 e.setCancelled(true);
                 AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour item it's INVAILD\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
             }
+            if (e.getPlayer().getInventory() == null && itemStack.getAmount() != e.getPlayer().getItemInHand().getAmount()) {
+                e.setCancelled(true);
+                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour item it's INVAILD\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            }
             if (e.getPlayer().getInventory() == null && itemStack.getType() != e.getPlayer().getItemInHand().getType()) {
                 e.setCancelled(true);
                 AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour item it's INVAILD\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
