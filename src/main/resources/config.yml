@@ -1,5 +1,7 @@
 A00Protector:
+
   prefix: '&4A&C00&7Protector'
+
   crash:
     handle-disconnect:
       enable: false
@@ -11,55 +13,71 @@ A00Protector:
       enable: false
     ban:
       enable: false
+
   anti-vpn:
+    enable: false
     checkip:
       enable: true
       kick-message: '&7Plase do not use vpn &7Maybe restart your router'
     country:
-      enable: true
+      enable: false
       kick-message: '&7Your country is blocked'
       list:
       - "Poland"
     isocode:
-      enable: true
+      enable: false
       kick-message: '&7Your isocode is blocked'
       list:
       - "PL"
+
+  PagesLimiter-Two:
+    enable: true
+    limit: 15
+
   PagesLimiter:
     enable: true
     limit: 5
+
   CheckPing:
     enable: true
-    limit: 600
+    limit: 1200
     kick-message: '&7Your ping is too big'
+
   ScoreBoard:
-    enable: true
+    enable: false
+
   nick-check:
     enable: true
     kick-message: '&7Please change your nickname. (This nickname is blocked)'
     list:
     - "Stulejka"
+
   antybot:
     ping-motd:
-      enable: false
+      enable: true
       kick-message: '&7Please add the server to the list and join the server'
     double-join:
-      enable: true
+      enable: false
       kick-message: '&7Please join the server again'
-  bad-message:
+
+  chat:
     enable: true
-    notification: '&7Message has been blocked'
-    list:
-    - "fuck"
-  bad-command:
-    enable: true
-    notification: '&7This command is blocked'
-    list:
-    - "/pl"
-    - "/plugins"
+    bad-message:
+      enable: true
+      notification: '&7Message has been blocked'
+      list:
+      - "fuck"
+    bad-command:
+      enable: true
+      notification: '&7This command is blocked'
+      list:
+      - "/pl"
+      - "/plugins"
+
   payload:
     enable: true
     kick-message: '&7This chnnel has been blocked'
+
   exploits:
     pex:
       enable: true
@@ -78,11 +96,14 @@ CustomPayLoad:
   WorldDownloader:
     enable: true
     kick-message: 'NO NO NO Do not download the server map'
+
   Forge:
     enable: false
     kick-message: 'Do not use forge client :)'
+
   Checker:
     enable: true
+
   PacketLimit:
     enable: true
     limit: 20

@@ -1,14 +1,16 @@
 package eu.kscode.protector.basic.systems.antivpn;
 
-import org.bukkit.event.player.*;
-import eu.kscode.protector.basic.*;
-import eu.kscode.protector.utils.*;
-import org.bukkit.event.*;
+import eu.kscode.protector.basic.Main;
+import eu.kscode.protector.utils.A00Util;
+import eu.kscode.protector.utils.Logger;
+import org.apache.commons.io.IOUtils;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.json.JSONObject;
 
-import java.net.*;
+import java.net.URL;
 
-import org.apache.commons.io.*;
-import org.json.*;
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
    Copyright (C) 2018  KSCode.EU, KrafciG
@@ -59,7 +61,7 @@ public class PlayerAddressChecker implements Listener {
         try {
             final String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address + "&key=111111-222222-333333-444444&vpn=1&asn=1&node=1&time=1&tag=forum%20signup%20page").openStream()));
             final JSONObject obj = new JSONObject(json);
-            if (obj.getJSONObject(address).get("country") != Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.country.list")) {
+            if (!obj.getJSONObject(address).get("country").toString().toLowerCase().contains((CharSequence) Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.country.list"))) {
                 return true;
             }
         } catch (Exception ignored) {
@@ -71,7 +73,7 @@ public class PlayerAddressChecker implements Listener {
         try {
             final String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address + "&key=111111-222222-333333-444444&vpn=1&asn=1&node=1&time=1&tag=forum%20signup%20page").openStream()));
             final JSONObject obj = new JSONObject(json);
-            if (obj.getJSONObject(address).get("isocode") != Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.isocode.list")) {
+            if (!obj.getJSONObject(address).get("isocode").toString().toLowerCase().contains((CharSequence) Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.isocode.list"))) {
                 return true;
             }
         } catch (Exception ignored) {

@@ -42,16 +42,14 @@ public class PlayerUseEntityBlocker extends PacketAdapter {
         if (e.getPlayer() == null) {
             return;
         }
-        if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (PlayerUseEntityBlocker.PlayerUseEntityMap.containsKey(e.getPlayer().getName())) {
-                PlayerUseEntityBlocker.PlayerUseEntityMap.put(e.getPlayer().getName(), PlayerUseEntityBlocker.PlayerUseEntityMap.get(e.getPlayer().getName()) + 1);
-            } else {
-                PlayerUseEntityBlocker.PlayerUseEntityMap.put(e.getPlayer().getName(), 1);
-            }
-            if (PlayerUseEntityBlocker.PlayerUseEntityMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.UseEntity.limit")) {
-                e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(UseEntity)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
-            }
+        if (PlayerUseEntityBlocker.PlayerUseEntityMap.containsKey(e.getPlayer().getName())) {
+            PlayerUseEntityBlocker.PlayerUseEntityMap.put(e.getPlayer().getName(), PlayerUseEntityBlocker.PlayerUseEntityMap.get(e.getPlayer().getName()) + 1);
+        } else {
+            PlayerUseEntityBlocker.PlayerUseEntityMap.put(e.getPlayer().getName(), 1);
+        }
+        if (PlayerUseEntityBlocker.PlayerUseEntityMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.UseEntity.limit")) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(UseEntity)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
         }
     }
 }

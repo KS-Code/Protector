@@ -32,11 +32,9 @@ public class PlayerChatDetector implements Listener {
         if (e.getPlayer() == null) {
             return;
         }
-        if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (e.getMessage() == null /* DODAM TU COS*/) {
-                e.setCancelled(true);
-                e.getPlayer().sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Message has invalid characters"));
-            }
+        if (e.getMessage() == null /* DODAM TU COS*/) {
+            e.setCancelled(true);
+            e.getPlayer().sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Message has invalid characters"));
         }
     }
 }

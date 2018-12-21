@@ -52,42 +52,6 @@ public class Main extends JavaPlugin {
         Logger.info("Started loading A00Protector");
         saveDefaultConfig();
         Main.main = this;
-        Bukkit.getPluginManager().registerEvents(new PlayerChatDetector(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerDropItemDetector(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerChatListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerClickListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinAndQuitListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerConnectionListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerAnimationDetector(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerInteractDetector(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerBookExploitListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerPexExploitListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerWorldEditExploitListener(), this);
-        Bukkit.getPluginManager().registerEvents(new ScoreBoardListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerPingListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerRedStoneExploit(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerAddressChecker(), this);
-
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerItemStackListener(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerArmAnimationBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockDigBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockPlaceBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerCloseWindowBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEnchantItemBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEntityActionBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerHeldItemSlotBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerLookBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerPostionBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerResourcePackStatusBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerSetCreativeSlotBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerSettingsBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerTabCompleteBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerTransactionBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUpdateSignBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerWindowClickBlocker(this));
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUseEntityBlocker(this));
-
-        ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerCustomPayLoadBlocker(this));
 
         getCommand("Memory").setExecutor(new MemoryCommand());
         getCommand("Server").setExecutor(new ServerCommand());
@@ -96,14 +60,81 @@ public class Main extends JavaPlugin {
         getCommand("ProtectorReload").setExecutor(new ProtectorReloadCommand());
         getCommand("ProtectorDevelopers").setExecutor(new ProtectorDevelopersCommand());
 
-        getServer().getMessenger().registerIncomingPluginChannel(this, "FML|HS", new Forge());
-        getServer().getMessenger().registerIncomingPluginChannel(this, "FML|MP", new Forge());
-        getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|INIT", new WorldDownloader());
-        getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|REQUEST", new WorldDownloader());
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "WDL|CONTROL");
+        Bukkit.getPluginManager().registerEvents(new PlayerClickListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerJoinAndQuitListener(), this);
 
         ClearMapsUtil.start();
         ClearMapsUtil.start2();
+
+        if (getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerArmAnimationBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockDigBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockPlaceBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerCloseWindowBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEnchantItemBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEntityActionBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerHeldItemSlotBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerLookBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerPostionBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerResourcePackStatusBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerSetCreativeSlotBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerSettingsBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerTabCompleteBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerTransactionBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUpdateSignBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerWindowClickBlocker(this));
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUseEntityBlocker(this));
+            Bukkit.getPluginManager().registerEvents(new PlayerChatDetector(), this);
+            Bukkit.getPluginManager().registerEvents(new PlayerDropItemDetector(), this);
+            Bukkit.getPluginManager().registerEvents(new PlayerAnimationDetector(), this);
+            Bukkit.getPluginManager().registerEvents(new PlayerInteractDetector(), this);
+        }
+
+        if (getInstance().getConfig().getBoolean("CustomPayLoad.Forge.enable")) {
+            getServer().getMessenger().registerIncomingPluginChannel(this, "FML|HS", new Forge());
+            getServer().getMessenger().registerIncomingPluginChannel(this, "FML|MP", new Forge());
+        }
+
+        if (getInstance().getConfig().getBoolean("CustomPayLoad.WorldDownloader.enable")) {
+            getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|INIT", new WorldDownloader());
+            getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|REQUEST", new WorldDownloader());
+            getServer().getMessenger().registerOutgoingPluginChannel(this, "WDL|CONTROL");
+        }
+
+        if (getInstance().getConfig().getBoolean("CustomPayLoad.PacketLimit.enable")) {
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerCustomPayLoadBlocker(this));
+        }
+
+        if (getInstance().getConfig().getBoolean("A00Protector.antybot.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerConnectionListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.exploits.book-max-enchant-exploit.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerBookExploitListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.exploits.pex.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerPexExploitListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.exploits.pex.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerWorldEditExploitListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
+            Bukkit.getPluginManager().registerEvents(new ScoreBoardListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.CheckPing.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerPingListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.exploits.redstone-lag-exploit.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerRedStoneExploit(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.anti-vpn.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerAddressChecker(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.chat.enable")) {
+            Bukkit.getPluginManager().registerEvents(new PlayerChatListener(), this);
+        }
+        if (getInstance().getConfig().getBoolean("A00Protector.PagesLimiter.enable")) {
+            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerItemStackListener(this));
+        }
 
         long ra = System.currentTimeMillis() - start;
         Logger.info("Completed loading A00Protector in (" + ra + "ms)");

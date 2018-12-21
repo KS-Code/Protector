@@ -1,6 +1,5 @@
 package eu.kscode.protector.utils;
 
-import eu.kscode.protector.basic.Main;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
 import org.bukkit.Bukkit;
@@ -35,7 +34,6 @@ public class A00Util {
     public static String fixColors(String msg) {
         return msg.replaceAll("&", "§").replaceAll(">>", "»");
     }
-
 
     public static void sendActionBar(Player player, String text) {
         PacketPlayOutChat bar = new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + text + "\"}"), (byte) 2);

@@ -41,16 +41,14 @@ public class PlayerHeldItemSlotBlocker extends PacketAdapter {
         if (e.getPlayer() == null) {
             return;
         }
-        if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.containsKey(e.getPlayer().getName())) {
-                PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.put(e.getPlayer().getName(), PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.get(e.getPlayer().getName()) + 1);
-            } else {
-                PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.put(e.getPlayer().getName(), 1);
-            }
-            if (PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.HeldItemSlot.limit")) {
-                e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(HeldItemSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
-            }
+        if (PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.containsKey(e.getPlayer().getName())) {
+            PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.put(e.getPlayer().getName(), PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.get(e.getPlayer().getName()) + 1);
+        } else {
+            PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.put(e.getPlayer().getName(), 1);
+        }
+        if (PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.HeldItemSlot.limit")) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(HeldItemSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
         }
     }
 }

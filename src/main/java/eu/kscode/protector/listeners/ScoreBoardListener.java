@@ -11,8 +11,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
-import org.bukkit.scoreboard.ScoreboardManager;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
@@ -36,37 +34,33 @@ public class ScoreBoardListener implements Listener {
     -> TO CHYBA WYPIERDOLE
  */
     private void update(Player player) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
-            int ping = ((CraftPlayer) player).getHandle().ping;
-            long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            Objective o = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective("A00Protector", "A00Protector");
-            o.setDisplaySlot(DisplaySlot.SIDEBAR);
-            o.setDisplayName(A00Util.fixColors("&8●&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8●"));
-            o.getScore(" §a§r ").setScore(11);
-            o.getScore(" §8» §7Imformations §8:|: §cServer").setScore(10);
-            o.getScore(" §3§r ").setScore(9);
-            o.getScore(" §7Used memory: §c" + usedMem / 1024L / 1024L + "MB").setScore(8);
-            o.getScore(" §7Cores: §c" + Runtime.getRuntime().availableProcessors()).setScore(7);
-            o.getScore(" §7Your Ping: §c" + ping).setScore(6);
-            o.getScore(" §6§r ").setScore(5);
-            o.getScore(" §7Total memory: §c" + Runtime.getRuntime().totalMemory() / 1024L / 1024L + "MB").setScore(4);
-            o.getScore(" §7Max memeory: §c" + Runtime.getRuntime().maxMemory() / 1024L / 1024L + "MB").setScore(3);
-            o.getScore(" §7Free memory: §c" + Runtime.getRuntime().freeMemory() / 1024L / 1024L + "MB").setScore(2);
-            o.getScore(" §f§r ").setScore(1);
-            o.getScore(" §8» §4A§c00§7Protector §42.7§8-§cStable").setScore(0);
-            player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
-        }
-
+        int ping = ((CraftPlayer) player).getHandle().ping;
+        long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        Objective o = Bukkit.getScoreboardManager().getNewScoreboard().registerNewObjective("A00Protector", "A00Protector");
+        o.setDisplaySlot(DisplaySlot.SIDEBAR);
+        o.setDisplayName(A00Util.fixColors("&8●&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8●"));
+        o.getScore(" §a§r ").setScore(11);
+        o.getScore(" §8» §7Imformations §8:|: §cServer").setScore(10);
+        o.getScore(" §3§r ").setScore(9);
+        o.getScore(" §7Used memory: §c" + usedMem / 1024L / 1024L + "MB").setScore(8);
+        o.getScore(" §7Cores: §c" + Runtime.getRuntime().availableProcessors()).setScore(7);
+        o.getScore(" §7Your Ping: §c" + ping).setScore(6);
+        o.getScore(" §6§r ").setScore(5);
+        o.getScore(" §7Total memory: §c" + Runtime.getRuntime().totalMemory() / 1024L / 1024L + "MB").setScore(4);
+        o.getScore(" §7Max memeory: §c" + Runtime.getRuntime().maxMemory() / 1024L / 1024L + "MB").setScore(3);
+        o.getScore(" §7Free memory: §c" + Runtime.getRuntime().freeMemory() / 1024L / 1024L + "MB").setScore(2);
+        o.getScore(" §f§r ").setScore(1);
+        o.getScore(" §8» §4A§c00§7Protector §42.7§8-§cStable").setScore(0);
+        player.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
     }
+
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
-            new BukkitRunnable() {
-                public void run() {
-                    ScoreBoardListener.this.update(e.getPlayer());
-                }
-            }.runTaskTimer(Main.getInstance(), 130L, 180L);
-        }
+        new BukkitRunnable() {
+            public void run() {
+                ScoreBoardListener.this.update(e.getPlayer());
+            }
+        }.runTaskTimer(Main.getInstance(), 130L, 180L);
     }
 }

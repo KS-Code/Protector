@@ -5,6 +5,9 @@ import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketEvent;
 import eu.kscode.protector.basic.Main;
 import eu.kscode.protector.basic.systems.managers.AKickManager;
+import org.bukkit.GameMode;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,17 +44,29 @@ public class PlayerSetCreativeSlotBlocker extends PacketAdapter {
         if (e.getPlayer() == null) {
             return;
         }
-        if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.containsKey(e.getPlayer().getName())) {
-                PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) + 1);
-            } else {
-                PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), 1);
-            }
-            if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.SetCreativeSlot.limit")) {
-                e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
-            }
-
+        if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
         }
+        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.containsKey(e.getPlayer().getName())) {
+            PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) + 1);
+        } else {
+            PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), 1);
+        }
+        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.SetCreativeSlot.limit")) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+        }
+        // UWAGA BLOKOWANIE NBT NA SPOSOB YOONIKSA
+        final ItemStack itemStack = e.getPacket().getItemModifier().readSafely(0);
+
+        if (itemStack.getType() == Material.AIR || itemStack.getAmount() < 0 || itemStack.getType() == null) {
+            return;
+        }
+        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > 15 && itemStack.getType() == Material.BOOK_AND_QUILL || itemStack.getType() == Material.WRITTEN_BOOK) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour NBT is invalid\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+        }
+
     }
 }

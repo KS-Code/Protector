@@ -41,16 +41,14 @@ public class PlayerResourcePackStatusBlocker extends PacketAdapter {
         if (e.getPlayer() == null) {
             return;
         }
-        if (Main.getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
-            if (PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.containsKey(e.getPlayer().getName())) {
-                PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.put(e.getPlayer().getName(), PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.get(e.getPlayer().getName()) + 1);
-            } else {
-                PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.put(e.getPlayer().getName(), 1);
-            }
-            if (PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.ResourcePackStatus.limit")) {
-                e.setCancelled(true);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(ResourcePackStatus)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
-            }
+        if (PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.containsKey(e.getPlayer().getName())) {
+            PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.put(e.getPlayer().getName(), PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.get(e.getPlayer().getName()) + 1);
+        } else {
+            PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.put(e.getPlayer().getName(), 1);
+        }
+        if (PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.ResourcePackStatus.limit")) {
+            e.setCancelled(true);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(ResourcePackStatus)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
         }
     }
 }
