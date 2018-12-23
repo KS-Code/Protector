@@ -41,48 +41,29 @@ public class AKickManager {
             if (player == null) {
                 return;
             }
+            if (Main.getConf().getConf().getBoolean("A00Protector.crash.ban.enable")) {
+                Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
+                Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
+                player.setBanned(true);
+            }
             if (player.isOnline()) {
-                if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.handle-disconnect.enable")) {
+                if (Main.getConf().getConf().getBoolean("A00Protector.crash.handle-disconnect.enable")) {
                     ((CraftPlayer) player).getHandle().playerConnection.disconnect(reason);
-
-                    if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
-                        Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
-                        player.setBanned(true);
-                    }
                 }
 
-                if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.kick-player.enable")) {
+                if (Main.getConf().getConf().getBoolean("A00Protector.crash.kick-player.enable")) {
                     player.kickPlayer(A00Util.fixColors(reason));
-
-                    if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
-                        Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
-                        player.setBanned(true);
-                    }
                 }
 
-                if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.crash-player.enable")) {
+                if (Main.getConf().getConf().getBoolean("A00Protector.crash.crash-player.enable")) {
                     ((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutExplosion(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE, Float.MAX_VALUE, Collections.EMPTY_LIST, new Vec3D(Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE)));
-
-                    if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
-                        Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
-                        player.setBanned(true);
-                    }
+                }
                 }
 
-                if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.close-socket.enable")) {
+            if (Main.getConf().getConf().getBoolean("A00Protector.crash.close-socket.enable")) {
                     NetworkManager netMan = ((CraftPlayer) player).getHandle().playerConnection.networkManager;
                     Channel channel = netMan.channel;
                     channel.close();
-
-                    if (Main.getInstance().getConfig().getBoolean("A00Protector.crash.ban.enable")) {
-                        Logger.warn("** A00Protector -> Player: (" + player.getPlayer().getName() + ") has been banned for crashing/lagging.");
-                        Bukkit.getServer().broadcastMessage(A00Util.fixColors("&8** " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8-> &7Player: &c" + player.getPlayer().getName() + " &7has been banned for crashing/lagging."));
-                        player.setBanned(true);
-                    }
-                }
             }
         });
     }

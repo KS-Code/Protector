@@ -7,13 +7,7 @@ depend: ['ProtocolLib']
 description: This plugin protects your server :)
 commands:
   Protector:
-    aliases: [a00p, a00, antycrash, anticrash]
-  ProtectorReload:
-    aliases: [prl, protectorrl, preload, a00rl]
-  ProtectorDevelopers:
-    aliases: [a00dev, pdev, developers]
-  Helpers:
-    aliases: [a00help, phelpers]
+    aliases: [a00p, a00, antycrash, anticrash, protector, a00protector]
   Server:
     aliases: [info, information, informations]
   Memory:

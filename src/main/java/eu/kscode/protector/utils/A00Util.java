@@ -39,37 +39,4 @@ public class A00Util {
         PacketPlayOutChat bar = new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + text + "\"}"), (byte) 2);
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(bar);
     }
-
-    public static void devgui(Player p) {
-        ItemStack glass = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 15);
-        ItemStack szymex = new ItemStack(Material.RED_ROSE, 1);
-        ItemStack shadow = new ItemStack(Material.RED_ROSE, 1);
-        ItemStack krafcig = new ItemStack(Material.BARRIER, 1);
-        ItemMeta glass1 = glass.getItemMeta();
-        ItemMeta szymex1 = szymex.getItemMeta();
-        ItemMeta shadow1 = shadow.getItemMeta();
-        ItemMeta krafcig1 = krafcig.getItemMeta();
-        glass1.setDisplayName(A00Util.fixColors("  "));
-        szymex1.setDisplayName(A00Util.fixColors("&8* &4&lDEV&8: &cSZYMEX73"));
-        shadow1.setDisplayName(A00Util.fixColors("&8* &4&lBIG HELPER&8: &cSHADOW"));
-        krafcig1.setDisplayName(A00Util.fixColors("&8* &4&lDEV&8: &cKrafciG"));
-        szymex1.setLore(Collections.singletonList(A00Util.fixColors("&8>> &7Discord: &cszymex73#2107 ")));
-        shadow1.setLore(Collections.singletonList(A00Util.fixColors("&8>> &7Discord: &cs৸ΛÐӨЩ#5519 ")));
-        krafcig1.setLore(Collections.singletonList(A00Util.fixColors("&8>> &7Discord: &cKrafciGG#2926")));
-        glass.setItemMeta(glass1);
-        szymex.setItemMeta(szymex1);
-        shadow.setItemMeta(shadow1);
-        krafcig.setItemMeta(krafcig1);
-        Inventory inventory = Bukkit.createInventory(p, 9, A00Util.fixColors("&8&m----(--&r &4A&C00&7Protector &8&m--)----"));
-        inventory.setItem(0, glass);
-        inventory.setItem(1, glass);
-        inventory.setItem(2, glass);
-        inventory.setItem(3, szymex);
-        inventory.setItem(4, krafcig);
-        inventory.setItem(5, shadow);
-        inventory.setItem(6, glass);
-        inventory.setItem(7, glass);
-        inventory.setItem(8, glass);
-        p.openInventory(inventory);
-    }
 }

@@ -46,9 +46,9 @@ public class PlayerTabCompleteBlocker extends PacketAdapter {
         } else {
             PlayerTabCompleteBlocker.PlayerTabCompleteMap.put(e.getPlayer().getName(), 1);
         }
-        if (PlayerTabCompleteBlocker.PlayerTabCompleteMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.TabComplete.limit")) {
+        if (PlayerTabCompleteBlocker.PlayerTabCompleteMap.get(e.getPlayer().getName()) > Main.getConf().getConf().getInt("ServerLagAndCrashDetector.Blocker.TabComplete.limit")) {
             e.setCancelled(true);
-            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(TabComplete)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(TabComplete)\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
         }
     }
 }

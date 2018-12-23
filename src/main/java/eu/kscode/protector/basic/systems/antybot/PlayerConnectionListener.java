@@ -45,30 +45,30 @@ public class PlayerConnectionListener implements Listener {
 
     @EventHandler
     public void onConnect(AsyncPlayerPreLoginEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.ping-motd.enable")) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.antybot.ping-motd.enable")) {
             InetAddress ip = e.getAddress();
             if (!this.pinged.contains(ip)) {
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.translateAlternateColorCodes('&', "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.antybot.ping-motd.kick-message")));
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, ChatColor.translateAlternateColorCodes('&', "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.antybot.ping-motd.kick-message")));
             }
         }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void PlayerNickChecker(AsyncPlayerPreLoginEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.nick-check.enable")) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.nick-check.enable")) {
             if (e.getName().toLowerCase().contains("bot") || e.getName().toLowerCase().contains("ploxy") ||
                     e.getName().toLowerCase().contains("pl0xy") || e.getName().toLowerCase().contains("pr0xy") ||
                     e.getName().toLowerCase().contains("Pr0ksi") || e.getName().toLowerCase().contains("b0t") ||
                     e.getName().toLowerCase().contains("proksi") || e.getName().toLowerCase().contains("proxy") ||
-                    Main.getInstance().getConfig().getStringList("A00Protector.nick-check.list").contains(e.getName().toLowerCase())) {
-                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.nick-check.kick-message")));
+                    Main.getConf().getConf().getStringList("A00Protector.nick-check.list").contains(e.getName().toLowerCase())) {
+                e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.nick-check.kick-message")));
             }
         }
     }
 
     @EventHandler
     public void onPing(ServerListPingEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.ping-motd.enable")) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.antybot.ping-motd.enable")) {
             InetAddress ip = e.getAddress();
             this.pinged.add(ip);
             Bukkit.getScheduler().runTaskLater(Main.getInstance(), () -> PlayerConnectionListener.this.pinged.remove(ip), 400L);
@@ -77,9 +77,9 @@ public class PlayerConnectionListener implements Listener {
 
     @EventHandler
     public void AntyBotDubbleJoin(PlayerJoinEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.antybot.dubble-join.enable")) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.antybot.dubble-join.enable")) {
             if (!e.getPlayer().hasPlayedBefore()) {
-                AKickManager.AKickManager2(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.antybot.double-join.kick-message"));
+                AKickManager.AKickManager2(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.antybot.double-join.kick-message"));
             }
         }
     }

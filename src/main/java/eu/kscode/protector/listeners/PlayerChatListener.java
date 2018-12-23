@@ -28,20 +28,20 @@ public class PlayerChatListener implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.chat.bad-message.enable")) {
-            if (Main.getInstance().getConfig().getStringList("A00Protector.chat.bad-message.list").contains(e.getMessage().toLowerCase())) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.chat.bad-message.enable")) {
+            if (Main.getConf().getConf().getStringList("A00Protector.chat.bad-message.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-message.notification")));
+                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7" + Main.getMess().getMess().getString("A00Protector.bad-message.notification")));
             }
         }
     }
 
     @EventHandler
     public void onBadCommand(PlayerCommandPreprocessEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.chat.bad-command.enable")) {
-            if (Main.getInstance().getConfig().getStringList("A00Protector.chat.bad-command.list").contains(e.getMessage().toLowerCase())) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.chat.bad-command.enable")) {
+            if (Main.getConf().getConf().getStringList("A00Protector.chat.bad-command.list").contains(e.getMessage().toLowerCase())) {
                 e.setCancelled(true);
-                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7" + Main.getInstance().getConfig().getString("A00Protector.bad-command.notification")));
+                e.getPlayer().sendMessage(A00Util.fixColors("&8* " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7" + Main.getMess().getMess().getString("A00Protector.bad-command.notification")));
             }
 
         }

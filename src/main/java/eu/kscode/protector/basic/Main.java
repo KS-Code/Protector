@@ -5,6 +5,8 @@ import com.comphenix.protocol.ProtocolLibrary;
 import eu.kscode.protector.basic.systems.antivpn.PlayerAddressChecker;
 import eu.kscode.protector.basic.systems.antybot.PlayerConnectionListener;
 import eu.kscode.protector.basic.systems.managers.ClearMapsUtil;
+import eu.kscode.protector.basic.systems.managers.config.ConfigIMPL;
+import eu.kscode.protector.basic.systems.managers.config.ConfigManager;
 import eu.kscode.protector.basic.systems.security.events.PlayerAnimationDetector;
 import eu.kscode.protector.basic.systems.security.events.PlayerChatDetector;
 import eu.kscode.protector.basic.systems.security.events.PlayerDropItemDetector;
@@ -41,32 +43,47 @@ import org.bukkit.plugin.java.JavaPlugin;
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 public class Main extends JavaPlugin {
-    private static Main main;
+    public static Main main;
+    private static ConfigManager config;
 
     public static Main getInstance() {
+        return Main.main;
+    }
+
+    public static ConfigManager getConf() {
+        return config;
+    }
+
+    public static ConfigManager getMess() {
+        return config;
+    }
+
+    public static Main getPlguin() {
         return Main.main;
     }
 
     public void onEnable() {
         long start = System.currentTimeMillis();
         Logger.info("Started loading A00Protector");
-        saveDefaultConfig();
         Main.main = this;
-
+        config = new ConfigIMPL();
+        if (!this.getDataFolder().exists()) {
+            this.getDataFolder().mkdirs();
+        }
+        config.loadConf();
+        config.loadMess();
         getCommand("Memory").setExecutor(new MemoryCommand());
         getCommand("Server").setExecutor(new ServerCommand());
-        getCommand("Helpers").setExecutor(new HelpersCommand());
         getCommand("Protector").setExecutor(new ProtectorCommand());
-        getCommand("ProtectorReload").setExecutor(new ProtectorReloadCommand());
-        getCommand("ProtectorDevelopers").setExecutor(new ProtectorDevelopersCommand());
 
-        Bukkit.getPluginManager().registerEvents(new PlayerClickListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ClearEntitiesListener(), this);
         Bukkit.getPluginManager().registerEvents(new PlayerJoinAndQuitListener(), this);
 
         ClearMapsUtil.start();
         ClearMapsUtil.start2();
+        ClearEntitiesListener.clerEntities();
 
-        if (getInstance().getConfig().getBoolean("ServerLagAndCrashDetector.enable")) {
+        if (getConf().getConf().getBoolean("ServerLagAndCrashDetector.enable")) {
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerArmAnimationBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockDigBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerBlockPlaceBlocker(this));
@@ -90,54 +107,56 @@ public class Main extends JavaPlugin {
             Bukkit.getPluginManager().registerEvents(new PlayerInteractDetector(), this);
         }
 
-        if (getInstance().getConfig().getBoolean("CustomPayLoad.Forge.enable")) {
+        if (getConf().getConf().getBoolean("CustomPayLoad.Forge.enable")) {
             getServer().getMessenger().registerIncomingPluginChannel(this, "FML|HS", new Forge());
             getServer().getMessenger().registerIncomingPluginChannel(this, "FML|MP", new Forge());
         }
 
-        if (getInstance().getConfig().getBoolean("CustomPayLoad.WorldDownloader.enable")) {
+        if (getConf().getConf().getBoolean("CustomPayLoad.WorldDownloader.enable")) {
             getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|INIT", new WorldDownloader());
             getServer().getMessenger().registerIncomingPluginChannel(this, "WDL|REQUEST", new WorldDownloader());
             getServer().getMessenger().registerOutgoingPluginChannel(this, "WDL|CONTROL");
         }
 
-        if (getInstance().getConfig().getBoolean("CustomPayLoad.PacketLimit.enable")) {
+        if (getConf().getConf().getBoolean("CustomPayLoad.PacketLimit.enable")) {
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerCustomPayLoadBlocker(this));
         }
 
-        if (getInstance().getConfig().getBoolean("A00Protector.antybot.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.antybot.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerConnectionListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.exploits.book-max-enchant-exploit.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.exploits.book-max-enchant-exploit.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerBookExploitListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.exploits.pex.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.exploits.pex.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerPexExploitListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.exploits.pex.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.exploits.pex.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerWorldEditExploitListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.ScoreBoard.enable")) {
-            Bukkit.getPluginManager().registerEvents(new ScoreBoardListener(), this);
-        }
-        if (getInstance().getConfig().getBoolean("A00Protector.CheckPing.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.CheckPing.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerPingListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.exploits.redstone-lag-exploit.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.exploits.redstone-lag-exploit.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerRedStoneExploit(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.anti-vpn.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.anti-vpn.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerAddressChecker(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.chat.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.chat.enable")) {
             Bukkit.getPluginManager().registerEvents(new PlayerChatListener(), this);
         }
-        if (getInstance().getConfig().getBoolean("A00Protector.PagesLimiter.enable")) {
+        if (getConf().getConf().getBoolean("A00Protector.PagesLimiter.enable")) {
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerItemStackListener(this));
         }
 
         long ra = System.currentTimeMillis() - start;
         Logger.info("Completed loading A00Protector in (" + ra + "ms)");
+    }
+
+    public void onDisable() {
+        Main.getMess().saveMess();
+        Main.getConf().saveConf();
     }
 
 }

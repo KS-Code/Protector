@@ -46,9 +46,9 @@ public class PlayerUpdateSignBlocker extends PacketAdapter {
         } else {
             PlayerUpdateSignBlocker.PlayerUpdateSignMap.put(e.getPlayer().getName(), 1);
         }
-        if (PlayerUpdateSignBlocker.PlayerUpdateSignMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.UpdateSign.limit")) {
+        if (PlayerUpdateSignBlocker.PlayerUpdateSignMap.get(e.getPlayer().getName()) > Main.getConf().getConf().getInt("ServerLagAndCrashDetector.Blocker.UpdateSign.limit")) {
             e.setCancelled(true);
-            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector." + Main.getInstance().getConfig().getString("A00Protector.prefix") + "") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(UpdateSign)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector." + Main.getMess().getMess().getString("A00Protector.prefix") + "") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(UpdateSign)\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
         }
     }
 }

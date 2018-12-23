@@ -28,7 +28,7 @@ public class MemoryCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Memory &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Memory &8&m--)-----"));
         sender.sendMessage("");
         sender.sendMessage(A00Util.fixColors("§8>> §7Used memory: &c" + usedMem / 1024L / 1024L + "MB"));
         sender.sendMessage("");
@@ -36,7 +36,7 @@ public class MemoryCommand implements CommandExecutor {
         sender.sendMessage(A00Util.fixColors("&8>> &7Free Memory: &c" + Runtime.getRuntime().freeMemory() / 1024L / 1024L + "MB"));
         sender.sendMessage(A00Util.fixColors("&8>> &7Max Memory: &c" + Runtime.getRuntime().maxMemory() / 1024L / 1024L + "MB"));
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Memory &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Memory &8&m--)-----"));
         sender.sendMessage("");
         return false;
     }

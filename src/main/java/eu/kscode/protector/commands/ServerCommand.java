@@ -2,6 +2,7 @@ package eu.kscode.protector.commands;
 
 import eu.kscode.protector.basic.Main;
 import eu.kscode.protector.utils.A00Util;
+import eu.kscode.protector.utils.TPS;
 import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -30,18 +31,11 @@ public class ServerCommand implements CommandExecutor {
         -> NAD TYM MUSZE POPRACOWAC
      */
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        StringBuilder sb = new StringBuilder(A00Util.fixColors("&8>> &7TPS &8(&7Current&8) &8(&75min ago&8) &8(&715min ago&8): &c"));
-        double[] recentTps;
-        for (int length = (recentTps = MinecraftServer.getServer().recentTps).length, i = 0; i < length; ++i) {
-            double tps = recentTps[i];
-            sb.append(Math.min(Math.round(tps * 100.0) / 100.0, 20.0));
-            sb.append("  ");
-        }
         long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
         sender.sendMessage("");
-        sender.sendMessage(sb.substring(0, sb.length() - 2));
+        sender.sendMessage(A00Util.fixColors("&8>> &7TPS &8(&7Current&8) &8(&75min ago&8) &8(&715min ago&8):   &c" + TPS.geTPS(0) + "  &8|  &c" + TPS.geTPS(1) + "  &8|  &c" + TPS.geTPS(2)));
         sender.sendMessage("");
         sender.sendMessage(A00Util.fixColors("&8>> &7Cores: &c" + Runtime.getRuntime().availableProcessors()));
         sender.sendMessage(A00Util.fixColors("&8>> &7Used Memory: &c" + usedMem / 1024L / 1024L + "MB"));
@@ -49,7 +43,7 @@ public class ServerCommand implements CommandExecutor {
         sender.sendMessage(A00Util.fixColors("&8>> &7Bukkit version: &c" + Bukkit.getBukkitVersion()));
         sender.sendMessage(A00Util.fixColors("&8>> &7Git Bukkit version: &c" + Bukkit.getServer().getVersion()));
         sender.sendMessage("");
-        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
+        sender.sendMessage(A00Util.fixColors("&8&m-----(--&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Server &8&m--)-----"));
         sender.sendMessage("");
         return false;
     }

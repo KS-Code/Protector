@@ -27,7 +27,7 @@ public class PlayerJoinAndQuitListener implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        A00Util.sendActionBar(e.getPlayer(), A00Util.fixColors("" + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &cThis server has protection against lag exploits and crashes"));
+        A00Util.sendActionBar(e.getPlayer(), A00Util.fixColors("" + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &cThis server has protection against lag exploits and crashes"));
 
 
     }

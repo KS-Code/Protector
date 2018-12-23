@@ -1,7 +1,5 @@
 A00Protector:
 
-  prefix: '&4A&C00&7Protector'
-
   crash:
     handle-disconnect:
       enable: false
@@ -14,19 +12,20 @@ A00Protector:
     ban:
       enable: false
 
+  ClearItemsOnGround:
+    world: 'world'
+    max-items: 300
+
   anti-vpn:
     enable: false
     checkip:
       enable: true
-      kick-message: '&7Plase do not use vpn &7Maybe restart your router'
     country:
       enable: false
-      kick-message: '&7Your country is blocked'
       list:
       - "Poland"
     isocode:
       enable: false
-      kick-message: '&7Your isocode is blocked'
       list:
       - "PL"
 
@@ -41,66 +40,52 @@ A00Protector:
   CheckPing:
     enable: true
     limit: 1200
-    kick-message: '&7Your ping is too big'
 
   ScoreBoard:
     enable: false
 
   nick-check:
     enable: true
-    kick-message: '&7Please change your nickname. (This nickname is blocked)'
     list:
     - "Stulejka"
 
   antybot:
     ping-motd:
       enable: true
-      kick-message: '&7Please add the server to the list and join the server'
     double-join:
       enable: false
-      kick-message: '&7Please join the server again'
 
   chat:
     enable: true
     bad-message:
       enable: true
-      notification: '&7Message has been blocked'
       list:
       - "fuck"
     bad-command:
       enable: true
-      notification: '&7This command is blocked'
       list:
       - "/pl"
       - "/plugins"
 
   payload:
     enable: true
-    kick-message: '&7This chnnel has been blocked'
 
   exploits:
     pex:
       enable: true
-      notification: '&7Pex exploit has been blocked'
     worldedit:
       enable: true
-      notification: '&7WorldEdit exploit has been blocked'
     redstone-lag-exploit:
       enable: true
       max-change: 60
     book-max-enchant-exploit:
       enable: true
-      kick-message: '&7This book has been blocked'
 
 CustomPayLoad:
   WorldDownloader:
     enable: true
-    kick-message: 'NO NO NO Do not download the server map'
-
   Forge:
     enable: false
-    kick-message: 'Do not use forge client :)'
-
   Checker:
     enable: true
 

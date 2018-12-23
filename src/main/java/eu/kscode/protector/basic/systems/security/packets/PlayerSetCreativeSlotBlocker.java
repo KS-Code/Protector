@@ -46,16 +46,16 @@ public class PlayerSetCreativeSlotBlocker extends PacketAdapter {
         }
         if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
             e.setCancelled(true);
-            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
         }
         if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.containsKey(e.getPlayer().getName())) {
             PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) + 1);
         } else {
             PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.put(e.getPlayer().getName(), 1);
         }
-        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > Main.getInstance().getConfig().getInt("ServerLagAndCrashDetector.Blocker.SetCreativeSlot.limit")) {
+        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > Main.getConf().getConf().getInt("ServerLagAndCrashDetector.Blocker.SetCreativeSlot.limit")) {
             e.setCancelled(true);
-            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYou have been kicked for likely server crashing/lagging\n&8>> &7Probably done using: &4(SetCreativeSlot)\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
         }
         // UWAGA BLOKOWANIE NBT NA SPOSOB YOONIKSA
         final ItemStack itemStack = e.getPacket().getItemModifier().readSafely(0);
@@ -65,7 +65,16 @@ public class PlayerSetCreativeSlotBlocker extends PacketAdapter {
         }
         if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > 15 && itemStack.getType() == Material.BOOK_AND_QUILL || itemStack.getType() == Material.WRITTEN_BOOK) {
             e.setCancelled(true);
-            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour NBT is invalid\n&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---");
+            itemStack.setAmount(0);
+            itemStack.setType(Material.AIR);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour NBT is invalid\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
+        }
+
+        if (PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.get(e.getPlayer().getName()) > 50 && itemStack.getType() == Material.FIREWORK || itemStack.getType() == Material.FIREWORK_CHARGE || itemStack.getType() == Material.BEACON) {
+            e.setCancelled(true);
+            itemStack.setAmount(0);
+            itemStack.setType(Material.AIR);
+            AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour NBT is invalid\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
         }
 
     }

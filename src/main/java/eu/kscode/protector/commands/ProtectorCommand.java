@@ -1,9 +1,15 @@
 package eu.kscode.protector.commands;
 
+import eu.kscode.protector.basic.Main;
 import eu.kscode.protector.utils.A00Util;
+import eu.kscode.protector.utils.TPS;
+import net.minecraft.server.v1_8_R3.MinecraftServer;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import java.text.DecimalFormat;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
@@ -24,13 +30,23 @@ import org.bukkit.command.CommandSender;
     */
 public class ProtectorCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        sender.sendMessage(A00Util.fixColors("&7 "));
-        sender.sendMessage(A00Util.fixColors("&8&m---(-&r &4A&C00&7Protector &8&m-)---"));
-        sender.sendMessage(A00Util.fixColors(" &7Version: &c2.7-Stable"));
-        sender.sendMessage(A00Util.fixColors(" &7Autors: &cKSCode.eu"));
-        sender.sendMessage(A00Util.fixColors(" &7Discord: &chttps://discord.gg/3gFPgQ8"));
-        sender.sendMessage(A00Util.fixColors("&8&m---(-&r &4A&C00&7Protector &8&m-)---"));
-        sender.sendMessage(A00Util.fixColors("&7 "));
+        long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+        if (!sender.hasPermission("a00protector.reload")) {
+            sender.sendMessage(A00Util.fixColors("&8** &fA00Protector &7created by &fKSCode &8**"));
+            sender.sendMessage(A00Util.fixColors("&7TPS: &c" + TPS.geTPS(0) + " &8:|: &7Usage memory: &c" + usedMem / 1024L / 1024L + "MB"));
+            return false;
+        }
+        sender.sendMessage(A00Util.fixColors("&7TPS: &c" + TPS.geTPS(0) + " &8:|: &7Usage memory: &c" + usedMem / 1024L / 1024L + "MB"));
+        sender.sendMessage(A00Util.fixColors(" "));
+        sender.sendMessage(A00Util.fixColors("&cYou have op ore permission. Reloading config"));
+        sender.sendMessage(A00Util.fixColors(" "));
+        long start = System.currentTimeMillis();
+        Main.getMess().saveMess();
+        Main.getConf().saveConf();
+        Main.getConf().loadConf();
+        Main.getMess().loadMess();
+        long ra = System.currentTimeMillis() - start;
+        sender.sendMessage(A00Util.fixColors(" &8* " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Config has &csuccessfully &7reloaded in &8(&c" + ra + "ms&8)"));
         return false;
     }
 }

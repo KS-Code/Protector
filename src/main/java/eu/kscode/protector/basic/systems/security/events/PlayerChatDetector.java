@@ -34,7 +34,7 @@ public class PlayerChatDetector implements Listener {
         }
         if (e.getMessage() == null /* DODAM TU COS*/) {
             e.setCancelled(true);
-            e.getPlayer().sendMessage(A00Util.fixColors(" &8* " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8:|: &7Message has invalid characters"));
+            e.getPlayer().sendMessage(A00Util.fixColors(" &8* " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8:|: &7Message has invalid characters"));
         }
     }
 }

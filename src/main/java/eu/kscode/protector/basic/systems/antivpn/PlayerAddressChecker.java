@@ -31,17 +31,17 @@ import java.net.URL;
 public class PlayerAddressChecker implements Listener {
     @EventHandler
     public void onLogin(final AsyncPlayerPreLoginEvent e) {
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.anti-vpn.checkip.enable") && this.isProxy(e.getAddress().getHostAddress())) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.anti-vpn.checkip.enable") && this.isProxy(e.getAddress().getHostAddress())) {
             Logger.warn(e.getName() + "'s use vpn or proxy");
-            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.anti-vpn.checkip.kick-message")));
+            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.anti-vpn.checkip.kick-message")));
         }
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.anti-vpn.country.enable") && this.Country(e.getAddress().getHostAddress())) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.anti-vpn.country.enable") && this.Country(e.getAddress().getHostAddress())) {
             Logger.warn(e.getName() + "'s joined with blocked country");
-            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.anti-vpn.country.kick-message")));
+            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.anti-vpn.country.kick-message")));
         }
-        if (Main.getInstance().getConfig().getBoolean("A00Protector.anti-vpn.isocode.enable") && this.isoCode(e.getAddress().getHostAddress())) {
+        if (Main.getConf().getConf().getBoolean("A00Protector.anti-vpn.isocode.enable") && this.isoCode(e.getAddress().getHostAddress())) {
             Logger.warn(e.getName() + "'s joined with blocked isocode");
-            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getInstance().getConfig().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getInstance().getConfig().getString("A00Protector.anti-vpn.isocode.kick-message")));
+            e.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, A00Util.fixColors("&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&7" + Main.getMess().getMess().getString("A00Protector.anti-vpn.isocode.kick-message")));
         }
     }
 
@@ -61,7 +61,7 @@ public class PlayerAddressChecker implements Listener {
         try {
             final String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address + "&key=111111-222222-333333-444444&vpn=1&asn=1&node=1&time=1&tag=forum%20signup%20page").openStream()));
             final JSONObject obj = new JSONObject(json);
-            if (!obj.getJSONObject(address).get("country").toString().toLowerCase().contains((CharSequence) Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.country.list"))) {
+            if (!obj.getJSONObject(address).get("country").toString().toLowerCase().contains((CharSequence) Main.getConf().getConf().getStringList("A00Protector.anti-vpn.country.list"))) {
                 return true;
             }
         } catch (Exception ignored) {
@@ -73,7 +73,7 @@ public class PlayerAddressChecker implements Listener {
         try {
             final String json = new String(IOUtils.toByteArray(new URL("http://proxycheck.io/v2/" + address + "&key=111111-222222-333333-444444&vpn=1&asn=1&node=1&time=1&tag=forum%20signup%20page").openStream()));
             final JSONObject obj = new JSONObject(json);
-            if (!obj.getJSONObject(address).get("isocode").toString().toLowerCase().contains((CharSequence) Main.getInstance().getConfig().getStringList("A00Protector.anti-vpn.isocode.list"))) {
+            if (!obj.getJSONObject(address).get("isocode").toString().toLowerCase().contains((CharSequence) Main.getConf().getConf().getStringList("A00Protector.anti-vpn.isocode.list"))) {
                 return true;
             }
         } catch (Exception ignored) {
