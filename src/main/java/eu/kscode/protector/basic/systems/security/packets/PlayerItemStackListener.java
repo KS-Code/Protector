@@ -107,7 +107,7 @@ public class PlayerItemStackListener extends PacketAdapter {
         }
         if (nbt.containsKey("title")) {
             final NbtList<String> pages = nbt.getList("title");
-            if (pages.size() > Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit")) {
+            if (pages.size() > 30 || pages.size() < 1) {
                 e.setCancelled(true);
                 itemStack.setAmount(0);
                 itemStack.setType(Material.AIR);
@@ -116,7 +116,7 @@ public class PlayerItemStackListener extends PacketAdapter {
         }
         if (nbt.containsKey("author")) {
             final NbtList<String> pages = nbt.getList("author");
-            if (pages.size() > Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit")) {
+            if (pages.size() > 16 || pages.size() < 1) {
                 e.setCancelled(true);
                 itemStack.setAmount(0);
                 itemStack.setType(Material.AIR);
