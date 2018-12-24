@@ -105,12 +105,22 @@ public class PlayerItemStackListener extends PacketAdapter {
                 AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour book has too many pages\n&8>> &7Pages limit: &4(" + Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit") + ")\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
             }
         }
-        if (nbt.containsKey("author")) {
-            if (nbt.getString("author").length() > 30 || nbt.getString("author") == null || nbt.getString("author").length() < 1) {
+        if (nbt.containsKey("title")) {
+            final NbtList<String> pages = nbt.getList("title");
+            if (pages.size() > Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit")) {
                 e.setCancelled(true);
                 itemStack.setAmount(0);
                 itemStack.setType(Material.AIR);
-                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour item stack it's has invaild NBT data\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
+                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour book has too many pages\n&8>> &7Pages limit: &4(" + Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit") + ")\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
+            }
+        }
+        if (nbt.containsKey("author")) {
+            final NbtList<String> pages = nbt.getList("author");
+            if (pages.size() > Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit")) {
+                e.setCancelled(true);
+                itemStack.setAmount(0);
+                itemStack.setType(Material.AIR);
+                AKickManager.AKickManager1(e.getPlayer(), "&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---\n&8>> &cYour book has too many pages\n&8>> &7Pages limit: &4(" + Main.getConf().getConf().getInt("A00Protector.PagesLimiter.limit") + ")\n&8>> &7Packet: &4(" + e.getPacket().getType().getPacketClass() + ")\n&8&m---(-&r " + Main.getMess().getMess().getString("A00Protector.prefix") + " &8&m-)---");
             }
         }
     }
