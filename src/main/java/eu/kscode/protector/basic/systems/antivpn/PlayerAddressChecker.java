@@ -13,7 +13,7 @@ import java.net.URL;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
-   Copyright (C) 2018  KSCode.EU, KrafciG
+   Copyright (C) 2018-2019  KSCode.EU, KrafciG
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ import java.net.URL;
    along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 public class PlayerAddressChecker implements Listener {
+
     @EventHandler
     public void onLogin(final AsyncPlayerPreLoginEvent e) {
         if (Main.getConf().getConf().getBoolean("A00Protector.anti-vpn.checkip.enable") && this.isProxy(e.getAddress().getHostAddress())) {

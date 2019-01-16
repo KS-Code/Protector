@@ -12,7 +12,7 @@ import java.util.List;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
-   Copyright (C) 2018  KSCode.EU, KrafciG
+   Copyright (C) 2018-2019  KSCode.EU, KrafciG
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,7 +30,6 @@ import java.util.List;
 public class ClearEntitiesListener implements Listener {
 
     public static void clerEntities() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), () -> {
             World world = Bukkit.getServer().getWorld(Main.getConf().getConf().getString("A00Protector.ClearItemsOnGround.world"));
             final List<Entity> entList = world.getEntities();
             for (final Entity current : entList) {
@@ -38,7 +37,6 @@ public class ClearEntitiesListener implements Listener {
                     current.remove();
                 }
             }
-        }, 400L, 400L);
         Bukkit.broadcastMessage(A00Util.fixColors("&8* " + Main.getMess().getMess().getString("A00Protector.prefix") + " " + Main.getMess().getMess().getString("A00Protector.ClearItemsOnGround.notify")));
     }
 }

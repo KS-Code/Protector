@@ -12,7 +12,7 @@ import java.util.Map;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
-   Copyright (C) 2018  KSCode.EU, KrafciG
+   Copyright (C) 2018-2019  KSCode.EU, KrafciG
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by

@@ -11,7 +11,7 @@ import org.bukkit.Bukkit;
 
 /*
      A00Protector, Plugin which protects your server against crashes and lags.
-   Copyright (C) 2018  KSCode.EU, KrafciG
+   Copyright (C) 2018-2019  KSCode.EU, KrafciG
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import org.bukkit.Bukkit;
     */
 public class ClearMapsUtil {
     public static void start() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
             PlayerArmAnimationBlocker.PlayerArmAnimationMap.clear();
             PlayerBlockDigBlocker.PlayerBlockDigMap.clear();
             PlayerBlockPlaceBlocker.PlayerBlockPlaceMap.clear();
@@ -36,7 +36,6 @@ public class ClearMapsUtil {
             PlayerEnchantItemBlocker.PlayerEnchantItemMap.clear();
             PlayerEntityActionBlocker.PlayerEntityActionMap.clear();
             PlayerHeldItemSlotBlocker.PlayerHeldItemSlotMap.clear();
-            PlayerLookBlocker.PlayerLookMap.clear();
             PlayerPostionBlocker.PlayerPositionMap.clear();
             PlayerResourcePackStatusBlocker.PlayerResourcePackStatusMap.clear();
             PlayerSetCreativeSlotBlocker.PlayerSetCreativeSlotMap.clear();
@@ -54,7 +53,7 @@ public class ClearMapsUtil {
     }
 
     public static void start2() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskTimer(Main.getInstance(), () -> {
             PlayerRedStoneExploit.PlayerRedStoneMap.clear();
         }, 80L, 200L);
     }
