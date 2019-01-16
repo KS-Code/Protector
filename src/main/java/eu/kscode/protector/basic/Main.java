@@ -8,7 +8,6 @@ import eu.kscode.protector.basic.systems.managers.ClearMapsUtil;
 import eu.kscode.protector.basic.systems.managers.config.ConfigIMPL;
 import eu.kscode.protector.basic.systems.managers.config.ConfigManager;
 import eu.kscode.protector.basic.systems.security.events.PlayerAnimationDetector;
-import eu.kscode.protector.basic.systems.security.events.PlayerChatDetector;
 import eu.kscode.protector.basic.systems.security.events.PlayerDropItemDetector;
 import eu.kscode.protector.basic.systems.security.events.PlayerInteractDetector;
 import eu.kscode.protector.basic.systems.security.exploits.PlayerBookExploitListener;
@@ -87,7 +86,6 @@ public class Main extends JavaPlugin {
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEnchantItemBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerEntityActionBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerHeldItemSlotBlocker(this));
-            ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerLookBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerPostionBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerResourcePackStatusBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerSetCreativeSlotBlocker(this));
@@ -97,7 +95,6 @@ public class Main extends JavaPlugin {
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUpdateSignBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerWindowClickBlocker(this));
             ProtocolLibrary.getProtocolManager().addPacketListener(new PlayerUseEntityBlocker(this));
-            Bukkit.getPluginManager().registerEvents(new PlayerChatDetector(), this);
             Bukkit.getPluginManager().registerEvents(new PlayerDropItemDetector(), this);
             Bukkit.getPluginManager().registerEvents(new PlayerAnimationDetector(), this);
             Bukkit.getPluginManager().registerEvents(new PlayerInteractDetector(), this);
